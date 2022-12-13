@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Puzzle_game_arwa_shamaly</string>
+    <string name="btn_start_play">ابدأ اللعب</string>
+    <string name="btn_setting">الاعدادات</string>
+    <string name="btn_log_out">الخروج</string>
+    <string name="tv_music">الموسيقى</string>
+    <string name="tv_notifications">الاشعارات</string>
+    <string name="tv_replay">اعادة اللعب</string>
+    <string name="tvSettingTitle">الاعدادات</string>
+    <string name="tvProfile">عرض الصفحة الشخصية</string>
+    <string name="tvUserName">اسم المستخدم :</string>
+    <string name="tvEmail">البريد الالكتروني :</string>
+    <string name="tvGender">الجنس :</string>
+    <string name="tvBirthdate">تاريخ الميلاد :</string>
+    <string name="tvCountry">الدولة :</string>
+    <string name="tvCompletedLevels">المراحل المكتملة :</string>
+    <string name="tvCorrectAnswer">الاجابات الصحيحة :</string>
+    <string name="tvWrongAnswer">الاجابات الخاطئة :</string>
+    <string name="tvProfileTitle">الصفحة الشخصية</string>
+    <string name="userNameHint">أدخل اسم المستخدم الخاص بك</string>
+    <string name="EmailHint">أدخل بريدك الإلكتروني</string>
+    <string name="rbMale">ذكر</string>
+    <string name="rbFemale">أنثى</string>
+
+
+    <string-array name="country">
+        <item>فلسطين</item>
+        <item>اوكرانيا</item>
+        <item>الدنمارك</item>
+        <item>فرنسا</item>
+        <item>المانيا</item>
+        <item>اليابان</item>
+        <item>الولايات المتحدة الامريكية</item>
+        <item>المملكة المتحدة</item>
+        <item>مصر</item>
+        <item>السودان</item>
+        <item>السعودية</item>
+        <item>الامارات</item>
+        <item>سوريا</item>
+        <item>الاردن</item>
+        <item>العراق</item>
+        <item>المغرب</item>
+        <item>لبنان</item>
+        <item>استراليا</item>
+        <item>بلجيكا</item>
+        <item>البرازيل</item>
+        <item>الصين</item>
+    </string-array>
+
+
+</resources>

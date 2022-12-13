@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.EditProfileScreen"
+    android:background="@color/background">
+
+   <androidx.constraintlayout.widget.ConstraintLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+       <EditText
+           android:id="@+id/etUserName"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_45sdp"
+           android:layout_marginTop="@dimen/_50sdp"
+           android:background="@drawable/btn_shape"
+           android:hint="@string/userNameHint"
+           android:layout_marginStart="@dimen/_25sdp"
+           android:layout_marginEnd="@dimen/_25sdp"
+           android:inputType="textPersonName"
+           android:paddingStart="@dimen/_5sdp"
+           android:textColor="@color/black"
+           android:textColorHint="@android:color/darker_gray"
+           android:textSize="@dimen/_17ssp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.567"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toTopOf="parent" />
+
+       <EditText
+           android:id="@+id/etEmail"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginTop="@dimen/_15sdp"
+           android:background="@drawable/btn_shape"
+           android:hint="@string/EmailHint"
+           android:paddingStart="@dimen/_5sdp"
+           android:layout_marginStart="@dimen/_25sdp"
+           android:layout_marginEnd="@dimen/_25sdp"
+           android:inputType="textEmailAddress"
+           android:textColor="@color/black"
+           android:textColorHint="@android:color/darker_gray"
+           android:textSize="@dimen/_17ssp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/etUserName" />
+
+       <RadioGroup
+           android:id="@+id/radioGroup"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="@dimen/_20sdp"
+           android:layout_marginStart="@dimen/_5sdp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintHorizontal_bias="0.161"
+           app:layout_constraintStart_toEndOf="@+id/tvEditGender"
+           app:layout_constraintTop_toBottomOf="@+id/etEmail">
+
+           <androidx.appcompat.widget.AppCompatRadioButton
+               android:id="@+id/rbMale"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/rbMale"
+               android:textColor="@color/white"
+               android:textSize="@dimen/_17ssp" />
+
+           <androidx.appcompat.widget.AppCompatRadioButton
+               android:id="@+id/rbFemale"
+               android:layout_width="wrap_content"
+               android:layout_height="wrap_content"
+               android:text="@string/rbFemale"
+               android:textColor="@color/white"
+               android:textSize="@dimen/_17ssp" />
+       </RadioGroup>
+
+       <TextView
+           android:id="@+id/tvEditGender"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:layout_marginStart="@dimen/_25sdp"
+           android:layout_marginTop="@dimen/_20sdp"
+           android:text="@string/tvGender"
+           android:textColor="@color/white"
+           android:textSize="@dimen/_17ssp"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/etEmail" />
+
+       <Spinner
+           android:id="@+id/sp_country"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginStart="@dimen/_25sdp"
+           android:layout_marginTop="@dimen/_15sdp"
+           android:layout_marginEnd="@dimen/_25sdp"
+           android:entries="@array/country"
+           android:spinnerMode="dialog"
+           android:textSize="@dimen/_17ssp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/tvSelectBirthdate" />
+
+       <TextView
+           android:id="@+id/tvSelectBirthdate"
+           android:layout_width="match_parent"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginTop="@dimen/_15sdp"
+           android:layout_marginStart="@dimen/_25sdp"
+           android:layout_marginEnd="@dimen/_25sdp"
+           android:background="@drawable/btn_shape"
+           android:gravity="center_vertical"
+           android:paddingStart="@dimen/_5sdp"
+           android:text="@string/tvBirthdate"
+           android:textColor="@color/black"
+           android:textSize="@dimen/_17ssp"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
+
+       <androidx.appcompat.widget.AppCompatButton
+           android:layout_width="@dimen/_100sdp"
+           android:layout_height="@dimen/_40sdp"
+           android:layout_marginTop="@dimen/_15sdp"
+           android:layout_marginBottom="@dimen/_100sdp"
+           android:text="save"
+           android:background="@drawable/btn_shape"
+           android:textAllCaps="false"
+           android:textColor="@color/black"
+           android:textSize="@dimen/_20sdp"
+           app:layout_constraintBottom_toBottomOf="parent"
+           app:layout_constraintEnd_toEndOf="parent"
+           app:layout_constraintStart_toStartOf="parent"
+           app:layout_constraintTop_toBottomOf="@+id/sp_country" />
+
+   </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</ScrollView>
