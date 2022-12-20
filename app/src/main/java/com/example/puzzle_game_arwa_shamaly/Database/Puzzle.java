@@ -1,6 +1,14 @@
 package com.example.puzzle_game_arwa_shamaly.Database;
 
+import androidx.room.Entity;
+import androidx.room.ForeignKey;
+import androidx.room.PrimaryKey;
+
+@Entity(foreignKeys = @ForeignKey(entity = Level.class,parentColumns = "level_no",
+        childColumns = "level_id",onUpdate = ForeignKey.CASCADE,onDelete = ForeignKey.CASCADE))
 public class Puzzle {
+    @PrimaryKey(autoGenerate = true)
+    int puzzle_id;
     int id;
     String title;
     String answer_1;
@@ -11,9 +19,10 @@ public class Puzzle {
     int points;
     int duration;
     String hint;
+    int level_id;
 
-    public Puzzle(int id, String title, String answer_1, String answer_2, String answer_3,
-                  String answer_4, String true_answer, int points, int duration, String hint) {
+    public Puzzle(int id, String title, String answer_1, String answer_2, String answer_3, String answer_4,
+                  String true_answer, int points, int duration, String hint, int level_id) {
         this.id = id;
         this.title = title;
         this.answer_1 = answer_1;
@@ -24,6 +33,7 @@ public class Puzzle {
         this.points = points;
         this.duration = duration;
         this.hint = hint;
+        this.level_id = level_id;
     }
 
     public int getId() {
@@ -104,5 +114,21 @@ public class Puzzle {
 
     public void setHint(String hint) {
         this.hint = hint;
+    }
+
+    public int getLevel_id() {
+        return level_id;
+    }
+
+    public void setLevel_id(int level_id) {
+        this.level_id = level_id;
+    }
+
+    public int getPuzzle_id() {
+        return puzzle_id;
+    }
+
+    public void setPuzzle_id(int puzzle_id) {
+        this.puzzle_id = puzzle_id;
     }
 }

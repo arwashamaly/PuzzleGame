@@ -23,6 +23,10 @@
     <string name="rbMale">ذكر</string>
     <string name="rbFemale">أنثى</string>
 
+    <string name="tvLevelNumber">المرحلة</string>
+    <string name="etCompleteAnswerHint">اكتب الجواب هنا</string>
+    <string name="btnSure">أنا متاكد</string>
+
 
     <string-array name="country">
         <item>فلسطين</item>

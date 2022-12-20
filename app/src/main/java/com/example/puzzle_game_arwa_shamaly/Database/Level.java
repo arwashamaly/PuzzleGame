@@ -1,7 +1,10 @@
 package com.example.puzzle_game_arwa_shamaly.Database;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+@Entity
 public class Level {
-
+    @PrimaryKey
      int level_no;
      int unlock_points;
 

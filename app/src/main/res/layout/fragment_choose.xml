@@ -1,6 +1,98 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragments.ChooseFragment"/>
+    android:background="@drawable/btn_shape"
+    tools:context=".Fragments.ChooseFragment">
+
+    <TextView
+        android:id="@+id/tvChooseQ"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_21ssp"
+        android:layout_marginStart="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_15sdp"
+        android:text="Text View"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAns1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@color/background"
+        android:padding="@dimen/_10sdp"
+        android:text="ans 1"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvChooseQ" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAns4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@color/background"
+        android:text="ans 4"
+        android:padding="@dimen/_10sdp"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAns3" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAns3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@color/background"
+        android:text="ans 3"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAns2" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btnAns2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_marginEnd="@dimen/_25sdp"
+        android:padding="@dimen/_10sdp"
+        android:background="@drawable/btn_shape"
+        android:backgroundTint="@color/background"
+        android:text="ans 2"
+        android:textAllCaps="false"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_16ssp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnAns1" />
+</androidx.constraintlayout.widget.ConstraintLayout>

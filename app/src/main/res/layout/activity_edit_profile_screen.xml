@@ -63,6 +63,7 @@
                android:id="@+id/rbMale"
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
+               android:checked="false"
                android:text="@string/rbMale"
                android:textColor="@color/white"
                android:textSize="@dimen/_17ssp" />
@@ -120,12 +121,13 @@
            app:layout_constraintTop_toBottomOf="@+id/radioGroup" />
 
        <androidx.appcompat.widget.AppCompatButton
+           android:id="@+id/btnSave"
            android:layout_width="@dimen/_100sdp"
            android:layout_height="@dimen/_40sdp"
            android:layout_marginTop="@dimen/_15sdp"
            android:layout_marginBottom="@dimen/_100sdp"
-           android:text="save"
            android:background="@drawable/btn_shape"
+           android:text="save"
            android:textAllCaps="false"
            android:textColor="@color/black"
            android:textSize="@dimen/_20sdp"

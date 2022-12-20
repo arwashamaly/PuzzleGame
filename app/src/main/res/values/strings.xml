@@ -24,6 +24,10 @@
     <string name="rbFemale">Female</string>
 
 
+    <string name="tvLevelNumber">Level</string>
+    <string name="etCompleteAnswerHint">Write the answer here</string>
+    <string name="btnSure">I\'m sure</string>
+
 
     <string-array name="country">
         <item>Palestine</item>
@@ -48,5 +52,7 @@
         <item>Brazil</item>
         <item>China</item>
     </string-array>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 </resources>
