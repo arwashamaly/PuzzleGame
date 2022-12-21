@@ -1,6 +1,11 @@
 package com.example.puzzle_game_arwa_shamaly.Database;
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
+@Entity
 public class Pattern {
+     @PrimaryKey
      int pattern_id;
      String pattern_name;
 

@@ -9,13 +9,14 @@ import androidx.room.RoomDatabase;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
-@Database(entities = {Level.class,Puzzle.class,User.class},
+@Database(entities = {Level.class,Puzzle.class,User.class,Pattern.class},
         version = 1, exportSchema = false)
 public abstract class PuzzleDatabase extends RoomDatabase {
 
     public abstract UserDAO userDAO();
     public abstract LevelDAO levelDAO();
     public abstract PuzzleDAO puzzleDAO();
+    public abstract PatternDAO patternDAO();
 
     private static volatile PuzzleDatabase INSTANCE;
     private static final int NUMBER_OF_THREADS = 4;

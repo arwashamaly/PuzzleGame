@@ -23,11 +23,14 @@ public class TrueOrFalseFragment extends Fragment {
         // Required empty public constructor
     }
 
-    public static TrueOrFalseFragment newInstance(String param1, String param2) {
+    public static TrueOrFalseFragment
+    newInstance(String title, String true_answer, int points,
+                String answer_1, String answer_2, String answer_3,
+                String answer_4, int duration, String hint) {
         TrueOrFalseFragment fragment = new TrueOrFalseFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM1, title);
+        args.putString(ARG_PARAM2, true_answer);
         fragment.setArguments(args);
         return fragment;
     }
@@ -45,7 +48,7 @@ public class TrueOrFalseFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentTrueOrFalseBinding binding =
-                FragmentTrueOrFalseBinding.inflate(inflater,container,false);
+                FragmentTrueOrFalseBinding.inflate(inflater, container, false);
 
         return binding.getRoot();
     }

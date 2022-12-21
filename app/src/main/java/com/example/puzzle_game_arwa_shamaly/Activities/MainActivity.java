@@ -27,7 +27,6 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     PuzzleViewModel model;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,7 +64,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 3000);
     }
-
     private void getData() {
         String json = readFromAssets();
         try {
@@ -95,22 +93,32 @@ public class MainActivity extends AppCompatActivity {
                     int points = questionsJsonObject.getInt("points");
                     int duration = questionsJsonObject.getInt("duration");
                     String hint = questionsJsonObject.getString("hint");
-                    Puzzle puzzle;
-                    if (i==0){
-                         puzzle= new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
-                                true_answer, points, duration, hint,level_no);
-                    }else{
-                        puzzle = new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
-                                true_answer, points, duration, hint,level_no);
-                    }
+
+                    JSONObject patternJsonObject = questionsJsonObject.getJSONObject("pattern");
+                    int pattern_id = patternJsonObject.getInt("pattern_id");
+                    String pattern_name = patternJsonObject.getString("pattern_name");
+
+                    Puzzle puzzle = new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
+                            true_answer, points, duration, hint, level_no, pattern_id);
+
                     model.insertPuzzle(puzzle);
 
-                    JSONObject pattern = questionsJsonObject.getJSONObject("pattern");
-                    int pattern_id = pattern.getInt("pattern_id");
-                    String pattern_name = pattern.getString("pattern_name");
-
-                    Pattern pattern1 = new Pattern(pattern_id, pattern_name);
-
+                    model.getAllPattern().observe(this, new Observer<List<Pattern>>() {
+                        @Override
+                        public void onChanged(List<Pattern> patterns) {
+                            Pattern pattern = new Pattern(pattern_id, pattern_name);
+                            if (patterns.size() == 0) {
+                                model.insertPattern(pattern);
+                            } else {
+                                for (int k = 0; k < patterns.size(); k++) {
+                                    Pattern pattern1 = patterns.get(k);
+                                    if (pattern1.getPattern_id() != pattern_id) {
+                                        model.insertPattern(pattern);
+                                    }
+                                }
+                            }
+                        }
+                    });
                 }
             }
         } catch (JSONException e) {

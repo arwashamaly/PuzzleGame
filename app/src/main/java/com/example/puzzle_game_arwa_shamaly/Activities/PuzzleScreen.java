@@ -33,17 +33,28 @@ public class PuzzleScreen extends AppCompatActivity {
 
         level_no = getIntent().getIntExtra("level_no", -1);
 
+        ArrayList<Fragment> fragments = new ArrayList<>();
+        int patt=0;
+
         model.getAllPuzzleByLevelID(level_no).observe(this, new Observer<List<Puzzle>>() {
             @Override
             public void onChanged(List<Puzzle> puzzles) {
+                for (int i = 0; i < puzzles.size(); i++) {
+                    Puzzle puzzle = puzzles.get(i);
+                    //المفروض جايه مع كل سؤال patt و بنقارنها بقيمة
+                    if (patt==1){
+                        fragments.add(new TrueOrFalseFragment());
+                    }else if (patt==2){
+                        fragments.add(new ChooseFragment());
+
+                    }else {
+                        fragments.add(new CompleteFragment());
+                    }
+                }
 
             }
         });
 
-        ArrayList<Fragment> fragments = new ArrayList<>();
-        fragments.add(new ChooseFragment());
-        fragments.add(new CompleteFragment());
-        fragments.add(new TrueOrFalseFragment());
 
         FragmentVPAdapter adapter = new FragmentVPAdapter(this, fragments);
         binding.viewPager2.setAdapter(adapter);

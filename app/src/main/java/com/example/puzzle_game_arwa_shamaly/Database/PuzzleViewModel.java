@@ -48,5 +48,13 @@ public class PuzzleViewModel extends AndroidViewModel {
     public LiveData<List<Puzzle>> getAllPuzzleByLevelID(int levelID) {
         return repository.getAllPuzzleByLevelID(levelID);
     }
+    //pattern
+    public void insertPattern(Pattern pattern){
+        repository.insertPattern(pattern);
+    }
+    public LiveData<List<Pattern>> getAllPattern(){
+        return repository.getAllPattern();
+    }
+
 
 }
