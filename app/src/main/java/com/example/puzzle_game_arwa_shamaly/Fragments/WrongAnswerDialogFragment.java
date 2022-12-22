@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.puzzle_game_arwa_shamaly.R;
+import com.example.puzzle_game_arwa_shamaly.databinding.FragmentWrongAnswerDialogBinding;
 
 
 public class WrongAnswerDialogFragment extends Fragment {
@@ -45,7 +46,9 @@ public class WrongAnswerDialogFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_wrong_answer_dialog, container, false);
+        FragmentWrongAnswerDialogBinding binding=
+                FragmentWrongAnswerDialogBinding.inflate(inflater,container,false);
+
+        return binding.getRoot();
     }
 }

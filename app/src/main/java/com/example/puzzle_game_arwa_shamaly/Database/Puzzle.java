@@ -5,10 +5,10 @@ import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 
 @Entity(foreignKeys = {@ForeignKey(entity = Level.class, parentColumns = "level_no",
-        childColumns = "level_id", onUpdate = ForeignKey.CASCADE, onDelete = ForeignKey.CASCADE),
-        @ForeignKey(entity = Pattern.class, parentColumns = "pattern_id",
-                childColumns = "pattern_id_fk", onUpdate = ForeignKey.CASCADE,
-                onDelete = ForeignKey.CASCADE)})
+        childColumns = "level_id", onUpdate = ForeignKey.CASCADE, onDelete = ForeignKey.CASCADE)
+        , @ForeignKey(entity = Pattern.class, parentColumns = "pattern_id",
+        childColumns = "pattern_id_fk", onUpdate = ForeignKey.CASCADE,
+        onDelete = ForeignKey.CASCADE)})
 public class Puzzle {
     @PrimaryKey(autoGenerate = true)
     int puzzle_id;

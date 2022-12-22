@@ -5,9 +5,9 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Pattern {
-     @PrimaryKey
-     int pattern_id;
-     String pattern_name;
+    @PrimaryKey
+    int pattern_id;
+    String pattern_name;
 
     public Pattern(int pattern_id, String pattern_name) {
         this.pattern_id = pattern_id;

@@ -13,23 +13,32 @@ import com.example.puzzle_game_arwa_shamaly.databinding.FragmentCompleteBinding;
 
 public class CompleteFragment extends Fragment {
 
+    private static final String ARG_PARAM_TITLE = "title";
+    private static final String ARG_PARAM_TRUE_ANSWER = "true_answer";
+    private static final String ARG_PARAM_POINTS = "points";
+    private static final String ARG_PARAM_DURATION = "duration";
+    private static final String ARG_PARAM_HINT = "hint";
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
-
-    private String mParam1;
-    private String mParam2;
+    private String title;
+    private String true_answer;
+    private String hint;
+    private int points;
+    private int duration;
 
     public CompleteFragment() {
         // Required empty public constructor
     }
 
 
-    public static CompleteFragment newInstance(String param1, String param2) {
+    public static CompleteFragment
+    newInstance(String title, String true_answer, int points, int duration, String hint) {
         CompleteFragment fragment = new CompleteFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
+        args.putString(ARG_PARAM_TITLE, title);
+        args.putString(ARG_PARAM_TRUE_ANSWER, true_answer);
+        args.putInt(ARG_PARAM_POINTS, points);
+        args.putInt(ARG_PARAM_DURATION, duration);
+        args.putString(ARG_PARAM_HINT, hint);
         fragment.setArguments(args);
         return fragment;
     }
@@ -38,8 +47,11 @@ public class CompleteFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
+            title = getArguments().getString(ARG_PARAM_TITLE);
+            true_answer = getArguments().getString(ARG_PARAM_TRUE_ANSWER);
+            hint = getArguments().getString(ARG_PARAM_HINT);
+            points = getArguments().getInt(ARG_PARAM_POINTS);
+            duration = getArguments().getInt(ARG_PARAM_DURATION);
         }
     }
 
@@ -47,8 +59,19 @@ public class CompleteFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         FragmentCompleteBinding binding =
-                FragmentCompleteBinding.inflate(inflater,container,false);
+                FragmentCompleteBinding.inflate(inflater, container, false);
+        binding.tvCompleteQ.setText(title);
+        binding.btnSure.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String userAnswer=binding.etCompleteAnswer.getText().toString().trim();
+                if (userAnswer.equals(true_answer)){
 
-        return  binding.getRoot();
+                }else{
+
+                }
+            }
+        });
+        return binding.getRoot();
     }
 }

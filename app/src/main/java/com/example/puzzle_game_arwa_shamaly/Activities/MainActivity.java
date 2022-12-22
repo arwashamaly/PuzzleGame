@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.util.Log;
 import android.widget.Toast;
 
 import com.example.puzzle_game_arwa_shamaly.Database.Level;
@@ -27,6 +28,7 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     ActivityMainBinding binding;
     PuzzleViewModel model;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -64,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
             }
         }, 3000);
     }
+
     private void getData() {
         String json = readFromAssets();
         try {
@@ -98,27 +101,14 @@ public class MainActivity extends AppCompatActivity {
                     int pattern_id = patternJsonObject.getInt("pattern_id");
                     String pattern_name = patternJsonObject.getString("pattern_name");
 
+                    Pattern pattern = new Pattern(pattern_id, pattern_name);
+                    model.insertPattern(pattern);
+
+
                     Puzzle puzzle = new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
                             true_answer, points, duration, hint, level_no, pattern_id);
 
                     model.insertPuzzle(puzzle);
-
-                    model.getAllPattern().observe(this, new Observer<List<Pattern>>() {
-                        @Override
-                        public void onChanged(List<Pattern> patterns) {
-                            Pattern pattern = new Pattern(pattern_id, pattern_name);
-                            if (patterns.size() == 0) {
-                                model.insertPattern(pattern);
-                            } else {
-                                for (int k = 0; k < patterns.size(); k++) {
-                                    Pattern pattern1 = patterns.get(k);
-                                    if (pattern1.getPattern_id() != pattern_id) {
-                                        model.insertPattern(pattern);
-                                    }
-                                }
-                            }
-                        }
-                    });
                 }
             }
         } catch (JSONException e) {
