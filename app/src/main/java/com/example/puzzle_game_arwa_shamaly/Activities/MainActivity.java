@@ -7,8 +7,6 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.util.Log;
-import android.widget.Toast;
 
 import com.example.puzzle_game_arwa_shamaly.Database.Level;
 import com.example.puzzle_game_arwa_shamaly.Database.Pattern;
@@ -72,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
         String json = readFromAssets();
         try {
             JSONArray jsonArray = new JSONArray(json);
-
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
 
@@ -87,35 +84,12 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject questionsJsonObject =
                             questionsJsonArray.getJSONObject(j);
 
-//                    int id = questionsJsonObject.getInt("id");
-//                    String title = questionsJsonObject.getString("title");
-//                    String answer_1 = questionsJsonObject.getString("answer_1");
-//                    String answer_2 = questionsJsonObject.getString("answer_2");
-//                    String answer_3 = questionsJsonObject.getString("answer_3");
-//                    String answer_4 = questionsJsonObject.getString("answer_4");
-//                    String true_answer = questionsJsonObject.getString("true_answer");
-//                    int points = questionsJsonObject.getInt("points");
-//                    int duration = questionsJsonObject.getInt("duration");
-//                    String hint = questionsJsonObject.getString("hint");
-
                     JSONObject patternJsonObject = questionsJsonObject.getJSONObject("pattern");
                     int pattern_id = patternJsonObject.getInt("pattern_id");
                     String pattern_name = patternJsonObject.getString("pattern_name");
 
                     Pattern pattern = new Pattern(pattern_id, pattern_name);
                     model.insertPattern(pattern);
-//
-//
-//                    Puzzle puzzle = new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
-//                            true_answer, points, duration, hint, level_no, pattern_id);
-
-//                    try {
-//                        Thread.sleep(500);
-//                    } catch (InterruptedException e) {
-//                        e.printStackTrace();
-//                    }
-
-//                    model.insertPuzzle(puzzle);
                 }
             }
         } catch (JSONException e) {
@@ -152,7 +126,6 @@ public class MainActivity extends AppCompatActivity {
                     JSONObject patternJsonObject = questionsJsonObject.getJSONObject("pattern");
                     int pattern_id = patternJsonObject.getInt("pattern_id");
 
-
                     Puzzle puzzle = new Puzzle(id, title, answer_1, answer_2, answer_3, answer_4,
                             true_answer, points, duration, hint, level_no, pattern_id);
 
@@ -179,4 +152,5 @@ public class MainActivity extends AppCompatActivity {
         }
         return json;
     }
+
 }
