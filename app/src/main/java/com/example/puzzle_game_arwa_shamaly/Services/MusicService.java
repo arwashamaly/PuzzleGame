@@ -15,7 +15,6 @@ public class MusicService extends Service {
 
     @Override
     public IBinder onBind(Intent intent) {
-        // TODO: Return the communication channel to the service.
         throw new UnsupportedOperationException("Not yet implemented");
     }
 
@@ -29,7 +28,8 @@ public class MusicService extends Service {
     public int onStartCommand(Intent intent, int flags, int startId) {
         super.onStartCommand(intent, flags, startId);
         mediaPlayer.start();
-        return START_REDELIVER_INTENT;
+        mediaPlayer.setLooping(true);
+        return START_NOT_STICKY;
     }
 
     @Override

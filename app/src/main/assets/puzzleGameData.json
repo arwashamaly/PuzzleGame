@@ -10,7 +10,7 @@
 				"answer_4": "",
 				"true_answer": "false",
 				"points": 3,
-				"duration": 1500,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 1,
 					"pattern_name": "True of False"
@@ -26,7 +26,7 @@
 				"answer_4": "دبلن",
 				"true_answer": "أديس أبابا",
 				"points": 2,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 2,
 					"pattern_name": "Choose the correct answer"
@@ -42,7 +42,7 @@
 				"answer_4": "",
 				"true_answer": "المريخ",
 				"points": 1,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 3,
 					"pattern_name": "Fill the answer"
@@ -58,7 +58,7 @@
 				"answer_4": "12 كوكب",
 				"true_answer": "8 كواكب",
 				"points": 2,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 2,
 					"pattern_name": "Choose the correct answer"
@@ -79,7 +79,7 @@
 				"answer_4": "",
 				"true_answer": "true",
 				"points": 5,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 1,
 					"pattern_name": "True of False"
@@ -95,7 +95,7 @@
 				"answer_4": "كوالا",
 				"true_answer": "شرغوف",
 				"points": 4,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 2,
 					"pattern_name": "Choose the correct answer"
@@ -111,7 +111,7 @@
 				"answer_4": "",
 				"true_answer": "التونة",
 				"points": 1,
-				"duration": 1000,
+				"duration": 20000,
 				"pattern": {
 					"pattern_id": 3,
 					"pattern_name": "Fill the answer"

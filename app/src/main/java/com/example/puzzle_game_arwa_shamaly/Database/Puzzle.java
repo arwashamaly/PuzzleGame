@@ -145,4 +145,23 @@ public class Puzzle {
     public void setPattern_id_fk(int pattern_id_fk) {
         this.pattern_id_fk = pattern_id_fk;
     }
+
+    @Override
+    public String toString() {
+        return "Puzzle{" +
+                "puzzle_id=" + puzzle_id +
+                ", id=" + id +
+                ", title='" + title + '\'' +
+                ", answer_1='" + answer_1 + '\'' +
+                ", answer_2='" + answer_2 + '\'' +
+                ", answer_3='" + answer_3 + '\'' +
+                ", answer_4='" + answer_4 + '\'' +
+                ", true_answer='" + true_answer + '\'' +
+                ", points=" + points +
+                ", duration=" + duration +
+                ", hint='" + hint + '\'' +
+                ", level_id=" + level_id +
+                ", pattern_id_fk=" + pattern_id_fk +
+                '}';
+    }
 }

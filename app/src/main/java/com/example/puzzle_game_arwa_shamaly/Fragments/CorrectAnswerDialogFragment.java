@@ -1,54 +1,58 @@
 package com.example.puzzle_game_arwa_shamaly.Fragments;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.fragment.app.DialogFragment;
-import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.puzzle_game_arwa_shamaly.R;
+import com.example.puzzle_game_arwa_shamaly.Listeners.InFragment;
 import com.example.puzzle_game_arwa_shamaly.databinding.FragmentCorrectAnswerDialogBinding;
 
 
 public class CorrectAnswerDialogFragment extends DialogFragment {
 
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    InFragment inFragment;
 
-    private String mParam1;
-    private String mParam2;
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        inFragment= (InFragment) context;
+    }
 
     public CorrectAnswerDialogFragment() {
         // Required empty public constructor
     }
 
 
-    public static CorrectAnswerDialogFragment newInstance(String param1, String param2) {
+    public static CorrectAnswerDialogFragment newInstance() {
         CorrectAnswerDialogFragment fragment = new CorrectAnswerDialogFragment();
-        Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
-        fragment.setArguments(args);
         return fragment;
     }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
         FragmentCorrectAnswerDialogBinding binding=
                 FragmentCorrectAnswerDialogBinding.inflate(inflater,container,false);
+
+        binding.tvNextQ.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                inFragment.nextPuzzle();
+                dismiss();
+            }
+        });
 
         return binding.getRoot();
     }

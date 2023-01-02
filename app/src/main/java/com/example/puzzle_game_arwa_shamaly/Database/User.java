@@ -5,6 +5,7 @@ import androidx.room.PrimaryKey;
 import androidx.room.TypeConverters;
 
 import java.util.Date;
+
 @Entity
 public class User {
     @PrimaryKey(autoGenerate = true)
@@ -14,13 +15,23 @@ public class User {
     String gender;
     String country;
     String birthdate;
+    int numOfCompletedLevels;
+    int numOfQuestionsAnswered;
+    int numOfCorrectAnswer;
+    int numOfWrongAnswer;
 
-    public User(String user_name, String email, String gender, String country, String birthdate) {
+    public User(String user_name, String email, String gender, String country, String birthdate,
+                int numOfCompletedLevels, int numOfQuestionsAnswered, int numOfCorrectAnswer,
+                int numOfWrongAnswer) {
         this.user_name = user_name;
         this.email = email;
         this.gender = gender;
         this.country = country;
         this.birthdate = birthdate;
+        this.numOfCompletedLevels = numOfCompletedLevels;
+        this.numOfQuestionsAnswered = numOfQuestionsAnswered;
+        this.numOfCorrectAnswer = numOfCorrectAnswer;
+        this.numOfWrongAnswer = numOfWrongAnswer;
     }
 
     public int getId() {
@@ -70,4 +81,37 @@ public class User {
     public void setBirthdate(String birthdate) {
         this.birthdate = birthdate;
     }
+
+    public int getNumOfCompletedLevels() {
+        return numOfCompletedLevels;
+    }
+
+    public void setNumOfCompletedLevels(int numOfCompletedLevels) {
+        this.numOfCompletedLevels = numOfCompletedLevels;
+    }
+
+    public int getNumOfQuestionsAnswered() {
+        return numOfQuestionsAnswered;
+    }
+
+    public void setNumOfQuestionsAnswered(int numOfQuestionsAnswered) {
+        this.numOfQuestionsAnswered = numOfQuestionsAnswered;
+    }
+
+    public int getNumOfCorrectAnswer() {
+        return numOfCorrectAnswer;
+    }
+
+    public void setNumOfCorrectAnswer(int numOfCorrectAnswer) {
+        this.numOfCorrectAnswer = numOfCorrectAnswer;
+    }
+
+    public int getNumOfWrongAnswer() {
+        return numOfWrongAnswer;
+    }
+
+    public void setNumOfWrongAnswer(int numOfWrongAnswer) {
+        this.numOfWrongAnswer = numOfWrongAnswer;
+    }
+
 }

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     android:background="@drawable/btn_shape"
     tools:context=".Fragments.CompleteFragment">
 
@@ -12,43 +12,38 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_20sdp"
+        android:layout_marginStart="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:textColor="@color/black"
         android:textSize="@dimen/_21ssp"
-        android:layout_marginStart="@dimen/_15sdp"
-        android:layout_marginEnd="@dimen/_15sdp"
+        android:layout_gravity="center_horizontal"
         android:text="TextView"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+         />
 
     <EditText
         android:id="@+id/etCompleteAnswer"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"
-        android:layout_marginStart="@dimen/_25sdp"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginStart="@dimen/_20sdp"
         android:layout_marginTop="@dimen/_25sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
         android:hint="@string/etCompleteAnswerHint"
         android:inputType="textPersonName"
-        android:textColor="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvCompleteQ" />
+        android:padding="@dimen/_3sdp"
+        android:textColor="@color/black" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btnSure"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_25sdp"
         android:layout_marginTop="@dimen/_30sdp"
-        android:layout_marginEnd="@dimen/_25sdp"
         android:background="@drawable/btn_shape"
+        android:layout_gravity="center_horizontal"
         android:backgroundTint="@color/background"
         android:text="@string/btnSure"
         android:textAllCaps="false"
         android:textColor="@color/black"
         android:textSize="@dimen/_16ssp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/etCompleteAnswer" />
-</androidx.constraintlayout.widget.ConstraintLayout>
+       />
+</LinearLayout>

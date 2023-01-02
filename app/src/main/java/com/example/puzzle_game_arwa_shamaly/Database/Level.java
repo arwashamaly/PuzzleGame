@@ -7,10 +7,14 @@ public class Level {
     @PrimaryKey
      int level_no;
      int unlock_points;
+     int score;
+     int overallAssessment;
 
-    public Level(int level_no, int unlock_points) {
+    public Level(int level_no, int unlock_points, int score, int overallAssessment) {
         this.level_no = level_no;
         this.unlock_points = unlock_points;
+        this.score = score;
+        this.overallAssessment = overallAssessment;
     }
 
     public int getLevel_no() {
@@ -28,4 +32,21 @@ public class Level {
     public void setUnlock_points(int unlock_points) {
         this.unlock_points = unlock_points;
     }
+
+    public int getScore() {
+        return score;
+    }
+
+    public void setScore(int score) {
+        this.score = score;
+    }
+
+    public int getOverallAssessment() {
+        return overallAssessment;
+    }
+
+    public void setOverallAssessment(int overallAssessment) {
+        this.overallAssessment = overallAssessment;
+    }
+
 }

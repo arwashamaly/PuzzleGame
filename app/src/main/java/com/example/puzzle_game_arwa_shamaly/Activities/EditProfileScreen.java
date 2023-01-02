@@ -38,9 +38,9 @@ public class EditProfileScreen extends AppCompatActivity {
 
         birthdate = intent.getStringExtra("birthdate");
 
-        if (intent.getStringExtra("gender").equals("Male")){
+        if (intent.getStringExtra("gender").equals("Male")) {
             binding.rbMale.setChecked(true);
-        }else{
+        } else {
             binding.rbFemale.setChecked(true);
         }
         binding.tvSelectBirthdate.setOnClickListener(new View.OnClickListener() {
@@ -94,7 +94,11 @@ public class EditProfileScreen extends AppCompatActivity {
                     Toast.makeText(getBaseContext(), "Check that the email is written correctly",
                             Toast.LENGTH_SHORT).show();
                 } else {
-                    User user = new User(username, email, gender, country, birthdate);
+                    User user = new User(username, email, gender, country, birthdate,
+                            intent.getIntExtra("numOfCompletedLevels", 0),
+                            intent.getIntExtra("numOfQuestionsAnswered", 0),
+                            intent.getIntExtra("numOfCorrectAnswer", 0),
+                            intent.getIntExtra("numOfWrongAnswer", 0));
                     user.setId(id);
                     model.updateUser(user);
                     finish();

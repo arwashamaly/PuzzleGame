@@ -1,5 +1,6 @@
 package com.example.puzzle_game_arwa_shamaly.Activities;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
@@ -7,12 +8,14 @@ import androidx.lifecycle.ViewModelProvider;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.animation.AnimationUtils;
 
 import com.example.puzzle_game_arwa_shamaly.Database.Level;
 import com.example.puzzle_game_arwa_shamaly.Database.Pattern;
 import com.example.puzzle_game_arwa_shamaly.Database.Puzzle;
 import com.example.puzzle_game_arwa_shamaly.Database.PuzzleViewModel;
 import com.example.puzzle_game_arwa_shamaly.Database.User;
+import com.example.puzzle_game_arwa_shamaly.R;
 import com.example.puzzle_game_arwa_shamaly.databinding.ActivityMainBinding;
 
 import org.json.JSONArray;
@@ -33,6 +36,9 @@ public class MainActivity extends AppCompatActivity {
         binding = ActivityMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        binding.imageView.setAnimation(
+                AnimationUtils.loadAnimation(getBaseContext(), R.anim.zoomout));
+
         model = new ViewModelProvider(this).get(PuzzleViewModel.class);
         model.getAllUser().observe(this, new Observer<List<User>>() {
             @Override
@@ -42,7 +48,11 @@ public class MainActivity extends AppCompatActivity {
                             "yourEmail@gmail.com",
                             "Male",
                             "Add it from the edit icon",
-                            "0/0/0000");
+                            "0/0/0000",
+                            0,
+                            0,
+                            0,
+                            0);
                     model.insertUser(user);
                 }
             }
@@ -76,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 int level_no = jsonObject.getInt("level_no");
                 int unlock_points = jsonObject.getInt("unlock_points");
 
-                Level level = new Level(level_no, unlock_points);
+                Level level = new Level(level_no, unlock_points, 0,0);
                 model.insertLevel(level);
 
                 JSONArray questionsJsonArray = jsonObject.getJSONArray("questions");

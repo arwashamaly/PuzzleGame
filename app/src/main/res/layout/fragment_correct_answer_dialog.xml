@@ -7,26 +7,44 @@
     tools:context=".Fragments.CorrectAnswerDialogFragment">
 
     <ImageView
-        android:id="@+id/imageView2"
+        android:id="@+id/imgCorrectAnswer"
         android:layout_width="@dimen/_100sdp"
         android:layout_height="@dimen/_100sdp"
-        android:layout_marginStart="28dp"
-        android:layout_marginTop="24dp"
+        android:layout_marginStart="@dimen/_20sdp"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_10sdp"
         android:src="@drawable/correct_answer"
-        app:layout_constraintEnd_toStartOf="@+id/tvCorrectAnswer"
+        android:layout_marginBottom="@dimen/_10sdp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/tvCorrectAnswerDialog"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.028" />
+
+    <TextView
+        android:id="@+id/tvCorrectAnswerDialog"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_35sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/tvCorrectAnswerDialog"
+        android:textColor="@color/black"
+        android:textSize="@dimen/_18ssp"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/tvCorrectAnswer"
+        android:id="@+id/tvNextQ"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
-        android:layout_marginEnd="104dp"
-        android:text="TextView"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_marginEnd="@dimen/_20sdp"
+        android:text="@string/tvNextQ"
         android:textColor="@color/black"
-        android:textSize="@dimen/_21ssp"
+        android:textSize="@dimen/_16sdp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/imgCorrectAnswer"
+        app:layout_constraintTop_toBottomOf="@+id/tvCorrectAnswerDialog" />
 </androidx.constraintlayout.widget.ConstraintLayout>

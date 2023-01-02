@@ -8,6 +8,7 @@
     tools:context=".Activities.SettingScreen">
 
     <LinearLayout
+        android:id="@+id/linear"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/_20sdp"
@@ -39,13 +40,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="30dp"
                 android:text="@string/tvProfile"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:textColor="@color/black"
                 android:textSize="@dimen/_21ssp" />
 
         </LinearLayout>
+
         <LinearLayout
             android:id="@+id/musicLayout"
             android:layout_width="match_parent"
@@ -65,10 +67,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="30dp"
                 android:text="@string/tv_music"
                 android:textColor="@color/black"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:textSize="@dimen/_21ssp" />
 
         </LinearLayout>
@@ -91,8 +93,8 @@
                 android:id="@+id/tvNotifications"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
                 android:layout_marginEnd="30dp"
                 android:text="@string/tv_notifications"
                 android:textColor="@color/black"
@@ -104,9 +106,9 @@
             android:id="@+id/tvReplay"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="@string/tv_replay"
             android:layout_gravity="center"
             android:layout_marginTop="@dimen/_10sdp"
+            android:text="@string/tv_replay"
             android:textColor="@color/black"
             android:textSize="@dimen/_21ssp" />
 

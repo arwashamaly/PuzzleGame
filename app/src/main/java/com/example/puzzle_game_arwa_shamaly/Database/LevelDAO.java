@@ -5,6 +5,7 @@ import androidx.room.Dao;
 import androidx.room.Insert;
 import androidx.room.OnConflictStrategy;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import java.util.List;
 
@@ -12,6 +13,9 @@ import java.util.List;
 public interface LevelDAO {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     void insertLevel(Level level);
+
+    @Update
+    void updateLevel(Level level);
 
     @Query("select * from level")
     LiveData<List<Level>> getAllLevel();

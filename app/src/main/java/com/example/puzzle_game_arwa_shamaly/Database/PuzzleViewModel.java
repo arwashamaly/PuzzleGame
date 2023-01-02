@@ -35,6 +35,10 @@ public class PuzzleViewModel extends AndroidViewModel {
         repository.insertLevel(level);
     }
 
+    public void updateLevel(Level level){
+        repository.updateLevel(level);
+    }
+
     public LiveData<List<Level>> getAllLevel() {
         return repository.getAllLevel();
     }

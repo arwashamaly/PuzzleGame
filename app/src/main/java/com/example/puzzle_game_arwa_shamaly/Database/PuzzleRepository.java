@@ -53,6 +53,16 @@ public class PuzzleRepository {
         });
     }
 
+    void updateLevel(Level level) {
+        PuzzleDatabase.databaseWriteExecutor.execute(new Runnable() {
+            @Override
+            public void run() {
+                levelDAO.updateLevel(level);
+            }
+        });
+    }
+
+
     LiveData<List<Level>> getAllLevel() {
         return levelDAO.getAllLevel();
     }
@@ -71,8 +81,9 @@ public class PuzzleRepository {
     LiveData<List<Puzzle>> getAllPuzzleByLevelID(int levelID) {
         return puzzleDAO.getAllPuzzleByLevelID(levelID);
     }
+
     //pattern
-    void insertPattern(Pattern pattern){
+    void insertPattern(Pattern pattern) {
         PuzzleDatabase.databaseWriteExecutor.execute(new Runnable() {
             @Override
             public void run() {
@@ -80,7 +91,8 @@ public class PuzzleRepository {
             }
         });
     }
-    LiveData<List<Pattern>> getAllPattern(){
+
+    LiveData<List<Pattern>> getAllPattern() {
         return patternDAO.getAllPattern();
     }
 

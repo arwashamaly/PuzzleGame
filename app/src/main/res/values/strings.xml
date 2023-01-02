@@ -14,6 +14,7 @@
     <string name="tvBirthdate">Birthdate :</string>
     <string name="tvCountry">Country :</string>
     <string name="tvCompletedLevels">Completed Levels :</string>
+    <string name="tvAnswerQ">Questions answered :</string>
     <string name="tvCorrectAnswer">Correct Answer :</string>
     <string name="tvWrongAnswer">Wrong Answer :</string>
     <string name="tvProfileTitle">Profile</string>
@@ -22,11 +23,25 @@
     <string name="EmailHint">enter your email</string>
     <string name="rbMale">Male</string>
     <string name="rbFemale">Female</string>
+    <string name="tvNextQ">Next</string>
 
 
     <string name="tvLevelNumber">Level</string>
     <string name="etCompleteAnswerHint">Write the answer here</string>
     <string name="btnSure">I\'m sure</string>
+    <string name="tvCorrectAnswerDialog">Correct Answer</string>
+    <string name="tvWrongAnswerDialog">Wrong Answer</string>
+
+    <string name="skipTitleDialog">Skip the question ?</string>
+    <string name="skipMessageDialog">3 points will be deducted for moving to the
+        second question when you click on yes.</string>
+
+    <string name="replayTitleDialog">Replay</string>
+    <string name="replayMessageDialog">All levels will be replayed from the beginning,
+        and you will lose your points when you press Yes.</string>
+
+    <string name="positiveButtonDialog">Yes</string>
+    <string name="negativeButtonDialog">No</string>
 
 
     <string-array name="country">
