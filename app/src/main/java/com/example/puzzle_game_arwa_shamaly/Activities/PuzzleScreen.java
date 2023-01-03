@@ -75,7 +75,7 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
         //
         if (qNum != 0) {
-            binding.viewPager2.setCurrentItem(qNum,false);
+            binding.viewPager2.setCurrentItem(qNum, false);
             Toast.makeText(this, "puzzle :" + qNum, Toast.LENGTH_SHORT).show();
         }
 
@@ -133,7 +133,8 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
                 qNum = sp.getInt(qNumKey, 0);
 
-                binding.viewPager2.setCurrentItem(qNum,false);
+
+                binding.viewPager2.setCurrentItem(qNum, false);
 
             }
         });
@@ -188,8 +189,14 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             JobScheduler scheduler = (JobScheduler) getSystemService(JOB_SCHEDULER_SERVICE);
             scheduler.schedule(info);
         }
-        editor.putInt(qNumKey, binding.viewPager2.getCurrentItem());
-        editor.commit();
+        if (puzzleNum == binding.viewPager2.getCurrentItem() + 1) {
+            editor.putInt(qNumKey, 0);
+            editor.commit();
+        } else {
+            editor.putInt(qNumKey, binding.viewPager2.getCurrentItem());
+            editor.commit();
+        }
+
     }
 
 
@@ -248,30 +255,29 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
     @Override
     public void puzzleInfo(int duration, String hint) {
         int pageNum = binding.viewPager2.getCurrentItem();
-        Log.d("arwaFragmentTest", "onCreateView: im here 4 "+pageNum);
+        Log.d("arwaFragmentTest", "onCreateView: im here 4 " + pageNum);
         binding.tvPuzzleNum.setText(pageNum + 1 + "/" + puzzleNum);
 
 
+        //كل متى ينفذ الكود الي في ال interval : onTick
+        timer = new CountDownTimer(duration, 1000) {
+            @Override
+            public void onTick(long l) {
+                //الوقت المتبقي للانتهاء : l
+                binding.tvTimer.setText(String.valueOf(l / 1000));
+            }
 
-            //كل متى ينفذ الكود الي في ال interval : onTick
-            timer = new CountDownTimer(duration, 1000) {
-                @Override
-                public void onTick(long l) {
-                    //الوقت المتبقي للانتهاء : l
-                    binding.tvTimer.setText(String.valueOf(l / 1000));
-                }
+            @Override
+            public void onFinish() {
+                binding.tvTimer.setText("time over");
+                WrongAnswerDialogFragment fragment = WrongAnswerDialogFragment.newInstance(hint);
+                fragment.show(getSupportFragmentManager(), "");
 
-                @Override
-                public void onFinish() {
-                    binding.tvTimer.setText("time over");
-                    WrongAnswerDialogFragment fragment = WrongAnswerDialogFragment.newInstance(hint);
-                    fragment.show(getSupportFragmentManager(), "");
+                MediaPlayer.create(getBaseContext(), R.raw.false_answer).start();
 
-                    MediaPlayer.create(getBaseContext(), R.raw.false_answer).start();
-
-                    timer.cancel();
-                }
-            }.start();
+                timer.cancel();
+            }
+        }.start();
 
 
     }
