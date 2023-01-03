@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
+import androidx.viewpager2.widget.ViewPager2;
 
 import android.app.job.JobInfo;
 import android.app.job.JobScheduler;
@@ -172,7 +173,14 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             }
         });
 
+        binding.viewPager2.registerOnPageChangeCallback(new ViewPager2.OnPageChangeCallback() {
+            @Override
+            public void onPageSelected(int position) {
+                super.onPageSelected(position);
+                binding.tvPuzzleNum.setText(position + 1 + "/" + puzzleNum);
 
+            }
+        });
     }
 
     @Override
@@ -254,9 +262,9 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
     @Override
     public void puzzleInfo(int duration, String hint) {
+        Log.d("orderTesting", "puzzleInfo: "+hint);
         int pageNum = binding.viewPager2.getCurrentItem();
         Log.d("arwaFragmentTest", "onCreateView: im here 4 " + pageNum);
-        binding.tvPuzzleNum.setText(pageNum + 1 + "/" + puzzleNum);
 
 
         //كل متى ينفذ الكود الي في ال interval : onTick
