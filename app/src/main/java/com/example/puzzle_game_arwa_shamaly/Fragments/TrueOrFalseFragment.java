@@ -78,8 +78,6 @@ public class TrueOrFalseFragment extends Fragment {
 
         binding.tvCompleteQ.setText(title);
 
-        inFragment.puzzleInfo(duration,hint);
-
         binding.imgTrue.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

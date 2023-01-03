@@ -60,17 +60,10 @@ public class HomeScreen extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
-        super.onBackPressed();
-        stopService(new Intent(this, MusicService.class));
-    }
-
-    @Override
     protected void onStop() {
         super.onStop();
         stopService(new Intent(this, MusicService.class));
     }
-
 
     @Override
     protected void onRestart() {

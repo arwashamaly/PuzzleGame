@@ -15,9 +15,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
-import android.util.Log;
 import android.view.View;
-import android.widget.Toast;
 
 
 import com.example.puzzle_game_arwa_shamaly.Adapteres.FragmentVPAdapter;
@@ -55,8 +53,9 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
     int oldScore;
     int unlock_points;
     int oldOverallAssessment;
-    int qNum;
     User user;
+
+    List<Puzzle> puzzleList;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -69,20 +68,10 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
         model = new ViewModelProvider(this).get(PuzzleViewModel.class);
 
-        binding.viewPager2.setUserInputEnabled(true);
-
         level_no = getIntent().getIntExtra("level_no", -1);
         binding.tvLevelNumber.append(" " + level_no);
 
-        //
-        if (qNum != 0) {
-            binding.viewPager2.setCurrentItem(qNum, false);
-            Toast.makeText(this, "puzzle :" + qNum, Toast.LENGTH_SHORT).show();
-        }
-
-        // Toast.makeText(this, "puzzle " + sp.getInt("puzzle", 0), Toast.LENGTH_SHORT).show();
-
-        //////
+        binding.viewPager2.setUserInputEnabled(true);
 
         model.getAllUser().observe(this, new Observer<List<User>>() {
             @Override
@@ -111,6 +100,8 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             public void onChanged(List<Puzzle> puzzles) {
                 ArrayList<Fragment> fragments = new ArrayList<>();
 
+                puzzleList = puzzles;
+
                 for (int i = 0; i < puzzles.size(); i++) {
                     Puzzle puzzle = puzzles.get(i);
                     puzzleNum = puzzles.size();
@@ -132,21 +123,16 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
                         fragments);
                 binding.viewPager2.setAdapter(adapter);
 
-                qNum = sp.getInt(qNumKey, 0);
-
-
-                binding.viewPager2.setCurrentItem(qNum, false);
-
+                binding.viewPager2.setCurrentItem(sp.getInt(qNumKey, 0), false);
             }
         });
-
 
         binding.tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(PuzzleScreen.this, "bb " + binding.viewPager2.getCurrentItem(), Toast.LENGTH_SHORT).show();
-                Toast.makeText(PuzzleScreen.this, "sss " + puzzleNum, Toast.LENGTH_SHORT).show();
+
                 timer.cancel();
+
                 new AlertDialog.Builder(PuzzleScreen.this)
                         .setTitle(R.string.skipTitleDialog)
                         .setMessage(R.string.skipMessageDialog)
@@ -154,6 +140,8 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
                                 if (puzzleNum == binding.viewPager2.getCurrentItem() + 1) {
+                                    editor.putInt(qNumKey, 0);
+                                    editor.commit();
                                     finish();
                                 } else {
                                     binding.viewPager2.setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
@@ -178,6 +166,30 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             public void onPageSelected(int position) {
                 super.onPageSelected(position);
                 binding.tvPuzzleNum.setText(position + 1 + "/" + puzzleNum);
+                for (int i = 0; i < puzzleList.size(); i++) {
+                    Puzzle puzzle = puzzleList.get(i);
+                    if (puzzle.getId() == position + 1) {
+                        //كل متى ينفذ الكود الي في ال interval : onTick
+                        timer = new CountDownTimer(puzzle.getDuration(), 1000) {
+                            @Override
+                            public void onTick(long l) {
+                                //الوقت المتبقي للانتهاء : l
+                                binding.tvTimer.setText(String.valueOf(l / 1000));
+                            }
+
+                            @Override
+                            public void onFinish() {
+                                binding.tvTimer.setText("time over");
+                                WrongAnswerDialogFragment fragment = WrongAnswerDialogFragment.newInstance(puzzle.getHint());
+                                fragment.show(getSupportFragmentManager(), "");
+
+                                MediaPlayer.create(getBaseContext(), R.raw.false_answer).start();
+
+                                timer.cancel();
+                            }
+                        }.start();
+                    }
+                }
 
             }
         });
@@ -204,15 +216,12 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             editor.putInt(qNumKey, binding.viewPager2.getCurrentItem());
             editor.commit();
         }
-
     }
-
 
     @Override
     public void onAnswer(String dialogName, String hint, int points) {
         timer.cancel();
 
-        Toast.makeText(this, "onAnswer", Toast.LENGTH_SHORT).show();
         if (dialogName.equals("correctAnswerDialog")) {
 
             CorrectAnswerDialogFragment fragment = CorrectAnswerDialogFragment.newInstance();
@@ -238,7 +247,7 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
                     unlock_points,
                     oldScore + points,
                     overallAssessment));
-        } else {
+        } else if (dialogName.equals("WrongAnswerDialog")){
             WrongAnswerDialogFragment fragment = WrongAnswerDialogFragment.newInstance(hint);
             fragment.show(getSupportFragmentManager(), "");
 
@@ -259,41 +268,8 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
         }
     }
 
-
-    @Override
-    public void puzzleInfo(int duration, String hint) {
-        Log.d("orderTesting", "puzzleInfo: "+hint);
-        int pageNum = binding.viewPager2.getCurrentItem();
-        Log.d("arwaFragmentTest", "onCreateView: im here 4 " + pageNum);
-
-
-        //كل متى ينفذ الكود الي في ال interval : onTick
-        timer = new CountDownTimer(duration, 1000) {
-            @Override
-            public void onTick(long l) {
-                //الوقت المتبقي للانتهاء : l
-                binding.tvTimer.setText(String.valueOf(l / 1000));
-            }
-
-            @Override
-            public void onFinish() {
-                binding.tvTimer.setText("time over");
-                WrongAnswerDialogFragment fragment = WrongAnswerDialogFragment.newInstance(hint);
-                fragment.show(getSupportFragmentManager(), "");
-
-                MediaPlayer.create(getBaseContext(), R.raw.false_answer).start();
-
-                timer.cancel();
-            }
-        }.start();
-
-
-    }
-
-
     @Override
     public void nextPuzzle() {
-        Toast.makeText(this, "nextPuzzle", Toast.LENGTH_SHORT).show();
         if (puzzleNum == binding.viewPager2.getCurrentItem() + 1) {
             User user1 = new User(
                     user.getUser_name(),
@@ -309,7 +285,13 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             model.updateUser(user1);
 
             finish();
+
+            editor.putInt(qNumKey, 0);
+            editor.commit();
+        }else {
+            binding.viewPager2.setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
         }
-        binding.viewPager2.setCurrentItem(binding.viewPager2.getCurrentItem() + 1);
     }
+
+
 }

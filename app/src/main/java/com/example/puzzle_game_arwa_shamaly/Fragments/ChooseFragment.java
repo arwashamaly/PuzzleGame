@@ -99,7 +99,6 @@ public class ChooseFragment extends Fragment {
         binding.btnAns3.setText(answer_3);
         binding.btnAns4.setText(answer_4);
 
-        inFragment.puzzleInfo(duration, hint);
 
         binding.btnAns1.setOnClickListener(new View.OnClickListener() {
             @Override

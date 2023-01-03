@@ -24,13 +24,14 @@ import java.util.List;
 public class SettingScreen extends AppCompatActivity {
     ActivitySettingScreenBinding binding;
 
-    boolean musicIsOn ;
-    boolean notificationsIsOn ;
+    boolean musicIsOn;
+    boolean notificationsIsOn;
 
     SharedPreferences sp;
     SharedPreferences.Editor editor;
     String settingFileName = "settingShared";
     String musicKey = "musicState";
+    String qNumKey = "qNum";
 
     String notificationKey = "notificationState";
 
@@ -44,7 +45,7 @@ public class SettingScreen extends AppCompatActivity {
         binding = ActivitySettingScreenBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
-        binding.linear.setAnimation(AnimationUtils.loadAnimation(getBaseContext(),R.anim.bounce));
+        binding.linear.setAnimation(AnimationUtils.loadAnimation(getBaseContext(), R.anim.bounce));
 
         model = new ViewModelProvider(this).get(PuzzleViewModel.class);
         model.getAllUser().observe(this, new Observer<List<User>>() {
@@ -56,22 +57,20 @@ public class SettingScreen extends AppCompatActivity {
         model.getAllLevel().observe(this, new Observer<List<Level>>() {
             @Override
             public void onChanged(List<Level> levels) {
-                levelList=levels;
+                levelList = levels;
             }
         });
 
         sp = getSharedPreferences(settingFileName, MODE_PRIVATE);
         editor = sp.edit();
 
-        musicIsOn = sp.getBoolean(musicKey, true);
-        notificationsIsOn = sp.getBoolean(notificationKey,true);
 
-        if (musicIsOn) {
+        if (sp.getBoolean(musicKey, true)) {
             binding.imgMusic.setImageResource(R.drawable.ic_music_on);
         } else {
             binding.imgMusic.setImageResource(R.drawable.ic_music_off);
         }
-        if (notificationsIsOn) {
+        if (sp.getBoolean(notificationKey, true)) {
             binding.imgNotifications.setImageResource(R.drawable.ic_notifications_active);
         } else {
             binding.imgNotifications.setImageResource(R.drawable.ic_notifications_off);
@@ -86,6 +85,7 @@ public class SettingScreen extends AppCompatActivity {
         binding.imgMusic.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                musicIsOn = sp.getBoolean(musicKey, true);
                 if (musicIsOn) {
                     binding.imgMusic.setImageResource(R.drawable.ic_music_off);
                     editor.putBoolean(musicKey, false);
@@ -103,6 +103,7 @@ public class SettingScreen extends AppCompatActivity {
         binding.imgNotifications.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                notificationsIsOn = sp.getBoolean(notificationKey, true);
                 if (notificationsIsOn) {
                     binding.imgNotifications.setImageResource(R.drawable.ic_notifications_off);
                     editor.putBoolean(notificationKey, false);
@@ -124,6 +125,8 @@ public class SettingScreen extends AppCompatActivity {
                         .setPositiveButton(R.string.positiveButtonDialog, new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface dialogInterface, int i) {
+                                editor.putInt(qNumKey, 0);
+                                editor.commit();
                                 User user1 =
                                         new User(user.getUser_name(),
                                                 user.getEmail(),
