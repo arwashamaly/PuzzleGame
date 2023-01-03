@@ -52,7 +52,8 @@ public class EditProfileScreen extends AppCompatActivity {
                         new DatePickerDialog.OnDateSetListener() {
                             @Override
                             public void onDateSet(DatePickerDialog view, int year, int monthOfYear, int dayOfMonth) {
-                                if (year < now.get(Calendar.YEAR)) {
+                                 int num =now.get(Calendar.YEAR) - year ;
+                                if (num > 10 ) {
                                     binding.tvSelectBirthdate.setText(dayOfMonth + "/" + (monthOfYear + 1) + "/" + year);
                                     birthdate = dayOfMonth + "/" + (monthOfYear + 1) + "/" + year;
                                 } else {
