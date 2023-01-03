@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,6 +61,7 @@ public class CompleteFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        Log.d("arwaFragmentTest", "onCreateView: im here 1 ");
         if (getArguments() != null) {
             id = getArguments().getInt(ARG_PARAM_ID);
             title = getArguments().getString(ARG_PARAM_TITLE);
@@ -78,8 +80,9 @@ public class CompleteFragment extends Fragment {
                 FragmentCompleteBinding.inflate(inflater, container, false);
 
         binding.tvCompleteQ.setText(title);
-
+        Log.d("arwaFragmentTest", "onCreateView: im here 2 ");
         inFragment.puzzleInfo(duration, hint);
+        Log.d("arwaFragmentTest", "onCreateView: im here 3 ");
 
         binding.btnSure.setOnClickListener(new View.OnClickListener() {
             @Override

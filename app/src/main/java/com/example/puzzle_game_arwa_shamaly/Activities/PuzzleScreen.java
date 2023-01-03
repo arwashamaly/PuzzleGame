@@ -14,6 +14,7 @@ import android.content.SharedPreferences;
 import android.media.MediaPlayer;
 import android.os.Bundle;
 import android.os.CountDownTimer;
+import android.util.Log;
 import android.view.View;
 import android.widget.Toast;
 
@@ -67,17 +68,18 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
         model = new ViewModelProvider(this).get(PuzzleViewModel.class);
 
-        binding.viewPager2.setUserInputEnabled(false);
+        binding.viewPager2.setUserInputEnabled(true);
 
         level_no = getIntent().getIntExtra("level_no", -1);
         binding.tvLevelNumber.append(" " + level_no);
 
         //
-        qNum = sp.getInt(qNumKey, 0);
         if (qNum != 0) {
-            binding.viewPager2.setCurrentItem(qNum);
+            binding.viewPager2.setCurrentItem(qNum,false);
+            Toast.makeText(this, "puzzle :" + qNum, Toast.LENGTH_SHORT).show();
         }
-        Toast.makeText(this, "puzzle " + sp.getInt("puzzle", 0), Toast.LENGTH_SHORT).show();
+
+        // Toast.makeText(this, "puzzle " + sp.getInt("puzzle", 0), Toast.LENGTH_SHORT).show();
 
         //////
 
@@ -129,8 +131,13 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
                         fragments);
                 binding.viewPager2.setAdapter(adapter);
 
+                qNum = sp.getInt(qNumKey, 0);
+
+                binding.viewPager2.setCurrentItem(qNum,false);
+
             }
         });
+
 
         binding.tvSkip.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -211,7 +218,7 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
             user1.setId(user.getId());
             model.updateUser(user1);
 
-            int overallAssessment = (oldScore * puzzleNum) * 100 / 100;
+            int overallAssessment = (oldScore / puzzleNum) * 100;
             model.updateLevel(new Level(level_no,
                     unlock_points,
                     oldScore + points,
@@ -240,12 +247,11 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
 
     @Override
     public void puzzleInfo(int duration, String hint) {
-        Toast.makeText(this, "puzzleInfo", Toast.LENGTH_SHORT).show();
-
         int pageNum = binding.viewPager2.getCurrentItem();
+        Log.d("arwaFragmentTest", "onCreateView: im here 4 "+pageNum);
         binding.tvPuzzleNum.setText(pageNum + 1 + "/" + puzzleNum);
 
-        if (pageNum == 0) {
+
 
             //كل متى ينفذ الكود الي في ال interval : onTick
             timer = new CountDownTimer(duration, 1000) {
@@ -267,9 +273,7 @@ public class PuzzleScreen extends AppCompatActivity implements InFragment {
                 }
             }.start();
 
-        }else {
-            timer.start();
-        }
+
     }
 
 
